@@ -4,6 +4,7 @@ from funcs import *
 import re
 import spreadsheet
 from flask import Flask, request
+import os
 
 bot = telebot.TeleBot(const.bot_token)
 server = Flask(__name__)
@@ -36,4 +37,17 @@ def subject_updater(message):
         bot.reply_to(message, 'Отлично, твое дз сохранено!')
 
 
-bot.polling(none_stop=True)
+@server.route('/' + const.bot_token, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
+
+
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://dzxa-loader.herokuapp.com/' + const.bot_token)
+    return "!", 200
+
+
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
