@@ -1,1 +1,5 @@
 pytelegrambotapi
+gspread
+oauth2client
+PyOpenSSL
+flask
