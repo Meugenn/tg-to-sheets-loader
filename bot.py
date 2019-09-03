@@ -50,9 +50,10 @@ def getMessage():
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://dzxa-loader.herokuapp.com/' + const.bot_token)
-    text = '<h1> Доступные названия </h1>'
+    text = '<h1> Доступные названия </h1> <p>'
     for sub in list_of_subjects:
-        text += f'<p>{sub}</p>'
+        text += f'{sub} <br>'
+    text += '</p>'
     if errors_text:
         text += f'<h1>Ошибки</h1> <p>{errors_text}</p>'
 
