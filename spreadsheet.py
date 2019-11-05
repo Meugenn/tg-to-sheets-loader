@@ -15,7 +15,6 @@ def update_homework(subject, text):
     coords = subjects[subject]
     wks.update_cell(coords[0], coords[1], text)
 
-
 # print(wks.range('B17:C81'))
 
 # def get_homeworks():

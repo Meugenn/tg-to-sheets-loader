@@ -2,5 +2,3 @@ const.py
 google_api_data.json
 .idea
 __pycache__
-Procfile
-.notgitignore
